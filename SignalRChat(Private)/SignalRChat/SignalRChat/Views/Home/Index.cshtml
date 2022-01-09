@@ -1,0 +1,16 @@
+﻿@inject IHttpContextAccessor _httpcontext
+@inject UserManager<IdentityUser> _usermanager
+@inject SignInManager<IdentityUser> _signinmanager
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">
+        Ev yixan chata xos gelmisiniz
+    </h1>
+    <hr />
+    <p class="text-primary p-home" style="font-size:25px">@_usermanager.GetUserName(User)</p>
+    <a class="a-home">Pulsuz catdi sehere kimi 10 aile dagitsaniz bizden 1 aylik "VIP" set qazanirsiniz.</a>
+    <img class="home" src="~/img/qeybet-haqqinda-1068x664.jpg" alt="Alternate Text" />
+</div>

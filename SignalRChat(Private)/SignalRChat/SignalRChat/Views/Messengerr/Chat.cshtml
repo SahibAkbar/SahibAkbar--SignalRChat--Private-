@@ -1,0 +1,30 @@
+﻿@model VmMessage
+@{
+    ViewData["Title"] = "Chat";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="mb-3"> @Model.User.Name'e Mesaj gonder</h1>
+            <hr />
+        </div>
+        <div class="col-lg-12">
+            <div class="messageCustom mb-3">
+                 @foreach (var item in Model.Messages)
+	             {
+                     
+		             <p class="@(item.SenderId==Model.SenderId?"sender":"receiver")"> @item.Text @*<span class="messageDate">@item.CreatedDate.ToString("hh : mm tt")</span>*@</p>
+	             }
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="messengerInput" placeholder="Mesajinizi yazin...">
+                <input hidden id="receiverId" value="@Model.User.Id">
+                <button class="ml-2 btn btn-outline-dark" type="button" id="messengerButton">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,128 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #c9c9c9;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+
+.messageCustom {
+    background-image: url(../img/photo-1553095066-5014bc7b7f2d.jfif);
+    background-size: cover;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.sender {
+    padding: 10px;
+    background-color: #188a2c;
+    color: white;
+    font-weight: 600;
+    align-self: end;
+    max-width: 500px;
+    border-radius: 13px;
+}
+
+.receiver {
+    padding: 10px;
+    background-color: #ff5e00;
+    color: white;
+    font-weight: 600;
+    align-self: start;
+    max-width: 500px;
+    border-radius: 13px;
+}
+h1 {
+    text-align: center;
+    background-color: #000000a3;
+    border-radius: 23px;
+    height: 80px;
+    color: white;
+}
+.home{
+    width:50%;
+}
+.a-home {
+    font-size: 20px !important;
+    background-color: #ffd401;
+    border-radius: 4px;
+}
+.p-home {
+    font-size: 25px;
+    background-color: blue;
+    color: white !important;
+    height: 57px;
+    border-radius: 20px;
+    padding-top: 7px;
+}

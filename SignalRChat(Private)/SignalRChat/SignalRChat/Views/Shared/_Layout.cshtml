@@ -1,0 +1,67 @@
+﻿@inject IHttpContextAccessor _httpcontext
+@inject UserManager<IdentityUser> _usermanager
+@inject SignInManager<IdentityUser> _signinmanager
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SignalRChat</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SignalRChat</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1 justify-content-end">
+                        @if (_signinmanager.IsSignedIn(User))
+                        {
+            <li class="nav-item mr-3">
+                <a class="nav-link btn btn-primary text-white">@_usermanager.GetUserName(User)</a>
+            </li>
+                            <li class="nav-item mr-3">
+                                <a class="nav-link btn btn-success text-white" asp-controller="Messengerr" asp-action="Index">Ev yixan tayfa</a>
+                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link btn btn-danger text-white" asp-controller="Account" asp-action="Logout" onclick="return confirm('Deqiq cixmag isterrsen???Geri qayida bilmersen haaaaaa!!!')">Cixis </a>
+                                            </li> }
+                                                        else
+                                                        {
+                                            <li class="nav-item mr-3">
+                                                <a class="nav-link btn btn-success text-white" asp-area="" asp-controller="Account" asp-action="Register">Qeydiyyat</a>
+                                            </li>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link btn btn-dark text-white" asp-area="" asp-controller="Account" asp-action="Login">Giris</a>
+                                                            </li>}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - SignalRChat - <a asp-area="" asp-controller="Home" asp-action="Chat">Chat</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
