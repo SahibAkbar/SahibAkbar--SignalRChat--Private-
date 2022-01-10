@@ -54,5 +54,14 @@ namespace SignalRChat.Hubs
 
             await Clients.User(receiverId).SendAsync("HideTyping");
         }
+
+        public override async Task OnDisconnectedAsync(Exception exception)
+        {
+            var Rid = _httpContext.HttpContext.Session.GetString("Rid");
+            if (Rid!=null)
+            {
+                await Clients.User(Rid).SendAsync("HideTyping");
+            }
+        }
     }
 }

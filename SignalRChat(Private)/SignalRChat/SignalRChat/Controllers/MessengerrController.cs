@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace SignalRChat.Controllers
 {
@@ -14,12 +15,14 @@ namespace SignalRChat.Controllers
         private readonly AppDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public MessengerrController(AppDbContext context, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public MessengerrController(AppDbContext context, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
+            _httpContextAccessor = httpContextAccessor;
         }
         public IActionResult Index()
         {
@@ -31,9 +34,13 @@ namespace SignalRChat.Controllers
             string senderId = _userManager.GetUserId(User);
             VmMessage model = new VmMessage();
             model.User = _context.CustomUsers.Find(receiverId);
+            _httpContextAccessor.HttpContext.Session.SetString("Rid", model.User.Id);
             model.Messages = _context.Messages.Where(m => m.SenderId == senderId && m.ReceiverId == receiverId || m.SenderId == receiverId && m.ReceiverId == senderId).ToList();
             model.SenderId = senderId;
             return View(model);
+
+            
+
         }
     }
 }
